@@ -9,8 +9,27 @@ def tp(ruc):
         return 'empresa'
     return 'natural' if s[:2] in ('10','15') else 'empresa'
 
-# dueno/representante (via datosperu.org / reporte consorcios). null = sin fuente confiable.
-duenos={}
+# dueno/representante (via datosperu.org / reporte consorcios CONOSCE). null = sin fuente confiable.
+DP='https://www.datosperu.org/'
+CONS='https://conosce.osce.gob.pe/buscador/assets/67ae6c4a/reportes/consorcios/'
+duenos={
+ # empresas (RUC 20) - gerente general / apoderado segun datosperu.org
+ '20100147514':('Sucursal de Southern Copper Corporation, controlada por Grupo Mexico (German Larrea Mota-Velasco)', DP+'empresa-southern-peru-copper-corporation-sucursal-del-peru-20100147514.php'),
+ '20603237120':('Gerente general: Samanez Alarcon Rodolfo Enrique', DP+'empresa-equipos-analiticos-y-tecnologia-de-informacion-sac-equanti-sac-20603237120.php'),
+ '20600229762':('Apoderados: Barrios Fernandez Concha Raul Hernando Martin; Bolaños Salazar Milton Cesar. Sucursal de Rohde & Schwarz (Alemania)', DP+'empresa-rohde-schwarz-colombia-sas-sucursal-peru-20600229762.php'),
+ '20563651921':('Gerente general: Silvia Principe Salazar', DP+'empresa-cima-book-sac-20563651921.php'),
+ '20606335581':('Gerente general: Martinez Machuca Alejandra Soledad', DP+'empresa-shopmarket-sac-20606335581.php'),
+ '20512011919':('Gerente general: Del Aguila Herrera Ricardo', DP+'empresa-proyecta-ingenieros-civiles-sac-20512011919.php'),
+ '20521301237':('Gerente general: Sotomayor Torres Andy Ronal', DP+'empresa-warem-sac-20521301237.php'),
+ '20178285336':('Gerente general: Lay Whittembury Christopher', DP+'empresa-reactivos-para-analisis-sac-20178285336.php'),
+ '20602629806':('Gerente general: Aza Eyzaguirre Fredy Oscar', DP+'empresa-ingenieros-civiles-aza-sarmiento-yanqui-asociados-sociedad-anonima-cerrada-icaza-sac-20602629806.php'),
+ '20392986601':('Gerente general: Franco Cruz Aaron', DP+'empresa-beicon-contratistas-generales-sac-beicon-sac-20392986601.php'),
+ '20501610217':('Gerente: Morales Figueroa Juan Zenon; apoderado: Morales Rodriguez Giancarlo', DP+'empresa-g-f-cueros-y-derivados-sociedad-anonima-cerrada-g-f-cueros-y-derivados-sac-20501610217.php'),
+ # consorcios (codigo SEACE) - integrantes y sus gerentes generales
+ '579383':('Consorcio integrado por CAMPUS CONTRATISTAS GENERALES S.R.L. (RUC 20454146477, gte. Benavente Barreda Andres Bertin) y MAGNUS CONTRATISTAS GENERALES S.A.C. (RUC 20498467971, gte. Sucasaca Caceres Angela Maria)', CONS+'2023/CONOSCE_CONSORCIO2023_0.xlsx'),
+ '1673972':('Consorcio integrado por CONSTRUCTORA D & R S.A.C. (RUC 20448302211, gte. Coyla Apaza Reynaldo) y GTECH S.A.C. (RUC 20448000711, gte. Guerra Bueno Alan Nahel)', CONS+'2025/CONOSCE_CONSORCIO2025_0.xlsx'),
+ '1529121':('Consorcio integrado por GRUPO FER. CONS S.A.C. (RUC 20447689503, gte. Chambilla Chaparro Sabino Freddy) y ARCEN CONTRATISTAS GENERALES S.A.C. (RUC 20455430489, gte. Condori Mamani Ronald)', CONS+'2024/CONOSCE_CONSORCIO2024_0.xlsx'),
+}
 
 rows=[]
 for Y in (2023,2024,2025):
